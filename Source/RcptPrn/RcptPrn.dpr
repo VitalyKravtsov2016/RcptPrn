@@ -42,12 +42,16 @@ begin
     if Result then
     begin
       gFileManager.PrintReportX;
+      Exit;
     end;
+
     Result := FindCmdLineSwitch('ZReport', ['-', '/'], True);
     if Result then
     begin
       gFileManager.PrintReportZ;
+      Exit;
     end;
+
   except
     on E: Exception do
     begin

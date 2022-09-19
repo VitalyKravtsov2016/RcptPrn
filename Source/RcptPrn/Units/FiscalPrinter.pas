@@ -162,6 +162,7 @@ begin
     FDriver.UseReceiptRibbon := True;
     FDriver.UseSlipDocument := False;
     FDriver.UseJournalRibbon := False;
+    Check(FDriver.Connect, 'Connect');
   end;
 end;
 
