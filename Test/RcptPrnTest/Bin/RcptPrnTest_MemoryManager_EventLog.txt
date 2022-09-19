@@ -1,0 +1,45 @@
+
+--------------------------------2022/7/22 16:57:25--------------------------------
+A memory block has been leaked. The size is: 36
+
+This block was allocated by thread 0x17E0, and the stack trace (return addresses) at the time was:
+402E18 
+5005ED 
+404D28 
+4B4F73 
+4F96DF 
+4F8BF3 
+4F7E1C 
+500771 
+500491 
+5009C4 
+48181B 
+
+The block is currently used for an object of class: Unknown
+
+The allocation number is: 33960
+
+Current memory dump of 256 bytes starting at pointer address 7FDACD90:
+5B 31 36 3A 35 37 3A 32 33 5D 20 CF F0 E8 ED F2 E5 F0 20 F7 E5 EA EE E2 20 EE F1 F2 E0 ED EE E2
+EB E5 ED 00 C8 4D A1 7C 00 00 00 00 E1 6E DA 7F 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+F1 88 00 00 18 2E 40 00 47 3B 40 00 22 3F 40 00 A2 5F 43 00 36 97 42 00 BB 78 49 00 01 AE 49 00
+C7 59 47 00 44 4C 42 00 75 4E 42 00 7D 62 42 00 E0 17 00 00 E0 17 00 00 65 3B 40 00 6D 3F 40 00
+0B 60 43 00 AB 3B 40 00 E0 79 49 00 65 3B 40 00 6D 3F 40 00 EF 67 43 00 AE AF 49 00 7D AF 49 00
+1E 0E 4A 00 24 00 00 00 A8 47 43 00 C1 CB F5 85 90 DC 50 00 90 DF 50 00 90 DF 50 00 90 DF 50 00
+90 DF 50 00 90 DF 50 00 90 DF 50 00 90 DF 50 00 90 DF 50 00 3E 34 0A 7A 00 00 00 00 C1 C2 DA 7F
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 A8 88 00 00 18 2E 40 00 47 3B 40 00 22 3F 40 00
+[  1  6  :  5  7  :  2  3  ]     Ï  ð  è  í  ò  å  ð     ÷  å  ê  î  â     î  ñ  ò  à  í  î  â
+ë  å  í  .  È  M  ¡  |  .  .  .  .  á  n  Ú    .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+ñ  ˆ  .  .  .  .  @  .  G  ;  @  .  "  ?  @  .  ¢  _  C  .  6  —  B  .  »  x  I  .  .  ®  I  .
+Ç  Y  G  .  D  L  B  .  u  N  B  .  }  b  B  .  à  .  .  .  à  .  .  .  e  ;  @  .  m  ?  @  .
+.  `  C  .  «  ;  @  .  à  y  I  .  e  ;  @  .  m  ?  @  .  ï  g  C  .  ®  ¯  I  .  }  ¯  I  .
+.  .  J  .  $  .  .  .  ¨  G  C  .  Á  Ë  õ  …    Ü  P  .    ß  P  .    ß  P  .    ß  P  .
+  ß  P  .    ß  P  .    ß  P  .    ß  P  .    ß  P  .  >  4  .  z  .  .  .  .  Á  Â  Ú  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ¨  ˆ  .  .  .  .  @  .  G  ;  @  .  "  ?  @  .
+
+--------------------------------2022/7/22 16:57:25--------------------------------
+This application has leaked memory. The small block leaks are (excluding expected leaks registered by pointer):
+
+21 - 36 bytes: Unknown x 1
+
+Note: Memory leak detail is logged to a text file in the same folder as this application. To disable this memory leak check, undefine "EnableMemoryLeakReporting".
