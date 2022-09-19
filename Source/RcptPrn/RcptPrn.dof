@@ -114,8 +114,8 @@ IncludeVerInfo=1
 AutoIncBuild=1
 MajorVer=1
 MinorVer=0
-Release=33
-Build=73
+Release=34
+Build=75
 Debug=0
 PreRelease=0
 Special=0
@@ -126,13 +126,13 @@ CodePage=1251
 [Version Info Keys]
 CompanyName=ШТРИХ-М
 FileDescription=Принтер чеков
-FileVersion=1.0.33.73
+FileVersion=1.0.34.75
 InternalName=
 LegalCopyright=(C) ШТРИХ-М
 LegalTrademarks=
 OriginalFilename=RcptPrn.exe
 ProductName=Принтер чеков
-ProductVersion=1.33
+ProductVersion=1.34
 Comments=http://www.shtrih-m.ru
 [HistoryLists\hlDebugSourcePath]
 Count=1

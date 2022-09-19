@@ -26,7 +26,6 @@ uses
   BrowseFolders in '..\..\Source\RcptPrn\Units\BrowseFolders.pas',
   DebugUtils in '..\..\Source\RcptPrn\Units\DebugUtils.pas',
   DrvFRLib_TLB in '..\..\Source\RcptPrn\Units\DrvFRLib_TLB.pas',
-  DrvFRx in '..\..\Source\RcptPrn\Units\DrvFRx.pas',
   FileNames in '..\..\Source\RcptPrn\Units\FileNames.pas',
   FiscalPrinterIntf in '..\..\Source\RcptPrn\Units\FiscalPrinterIntf.pas',
   ShellAPI2 in '..\..\Source\RcptPrn\Units\ShellAPI2.pas',

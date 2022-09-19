@@ -456,7 +456,7 @@ begin
     Printer.Connect;
     Printer.CheckStatus;
   finally
-    //Printer.Disconnect; !!!
+    Printer.Disconnect;
     Unlock;
   end;
 end;

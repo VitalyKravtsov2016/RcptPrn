@@ -53,8 +53,8 @@ Name: "{group}\Снять Z-отчет"; Filename: "{app}\RcptPrn.exe"; Parameters: "-ZRep
 ; Автостарт
 Name: "{commonstartup}\Принтер чеков"; Filename: "{app}\RcptPrn.exe"; WorkingDir: "{app}";
 ; Иконки на рабочем столе
-Name: "{userdesktop}\Снять Z-отчет"; Filename: "{app}\RcptPrn.exe"; Parameters: "-XReport"; Tasks: zreporticon; IconFilename: "{app}\Report.ico";
-Name: "{userdesktop}\Снять X-отчет"; Filename: "{app}\RcptPrn.exe"; Parameters: "-ZReport"; Tasks: xreporticon; IconFilename: "{app}\Report.ico";
+Name: "{userdesktop}\Снять X-отчет"; Filename: "{app}\RcptPrn.exe"; Parameters: "-XReport"; Tasks: zreporticon; IconFilename: "{app}\Report.ico";
+Name: "{userdesktop}\Снять Z-отчет"; Filename: "{app}\RcptPrn.exe"; Parameters: "-ZReport"; Tasks: xreporticon; IconFilename: "{app}\Report.ico";
 Name: "{userdesktop}\Принтер чеков 1.33"; Filename: "{app}\RcptPrn.exe"; Tasks: desktopicon
 Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\Принтер чеков 1.33"; Filename: "{app}\RcptPrn.exe"; Tasks: quicklaunchicon
 [Run]

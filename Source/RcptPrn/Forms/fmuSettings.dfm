@@ -57,7 +57,7 @@ object fmSettings: TfmSettings
     Top = 8
     Width = 425
     Height = 337
-    ActivePage = tsZReport
+    ActivePage = tsMain
     Anchors = [akLeft, akTop, akRight, akBottom]
     TabOrder = 0
     object tsMain: TTabSheet

@@ -35,30 +35,18 @@ uses
 {$R *.RES}
 
 function HasCmdLineSwitch: Boolean;
-var
-  Driver: TDrvFR;
 begin
   Result := False;
   try
     Result := FindCmdLineSwitch('XReport', ['-', '/'], True);
     if Result then
     begin
-      Driver := TDrvFR.Create(nil);
-      try
-        Driver.PrintReportWithoutCleaning;
-      finally
-        Driver.Free;
-      end;
+      gFileManager.PrintReportX;
     end;
     Result := FindCmdLineSwitch('ZReport', ['-', '/'], True);
     if Result then
     begin
-      Driver := TDrvFR.Create(nil);
-      try
-        Driver.PrintReportWithCleaning;
-      finally
-        Driver.Free;
-      end;
+      gFileManager.PrintReportZ;
     end;
   except
     on E: Exception do
