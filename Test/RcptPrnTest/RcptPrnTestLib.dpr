@@ -30,7 +30,9 @@ uses
   FiscalPrinterIntf in '..\..\Source\RcptPrn\Units\FiscalPrinterIntf.pas',
   ShellAPI2 in '..\..\Source\RcptPrn\Units\ShellAPI2.pas',
   MockFiscalPrinter in '..\..\Source\RcptPrn\Units\MockFiscalPrinter.pas',
-  Semaphore in '..\..\Source\RcptPrn\Units\Semaphore.pas';
+  Semaphore in '..\..\Source\RcptPrn\Units\Semaphore.pas',
+  AutoScrollTest in 'Units\AutoScrollTest.pas',
+  ReceiptTest in 'Units\ReceiptTest.pas';
 
 {$R *.RES}
 
