@@ -6,7 +6,7 @@ uses
   GUITestRunner,
   TextDfmTest in 'Units\TextDfmTest.pas',
   FileUtils in '..\..\Source\Shared\FileUtils.pas',
-  ReceiptTest in 'Units\ReceiptTest.pas',
+  FileManagerTest in 'Units\FileManagerTest.pas',
   fmuAbout in '..\..\Source\RcptPrn\Forms\fmuAbout.pas' {fmAbout},
   fmuMain in '..\..\Source\RcptPrn\Forms\fmuMain.pas' {fmMain},
   fmuMessage in '..\..\Source\RcptPrn\Forms\fmuMessage.pas' {fmMessage},

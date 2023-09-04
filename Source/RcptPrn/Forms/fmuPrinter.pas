@@ -222,7 +222,7 @@ function TfmPrinter.GetFileManager: TFileManager;
 begin
   if FFileManager = nil then
   begin
-    FFileManager := TFileManager.Create;
+    FFileManager := TFileManager.Create(nil);
     FFileManager.OnEvent := ServerEvent;
   end;
   Result := FFileManager;

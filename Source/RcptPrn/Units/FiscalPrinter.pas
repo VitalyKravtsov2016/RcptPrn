@@ -50,7 +50,7 @@ type
 
   { TFiscalPrinter }
 
-  TFiscalPrinter = class(TComponent, IFiscalPrinter)
+  TFiscalPrinter = class(TInterfacedObject, IFiscalPrinter)
   private
     FDriver: TDrvFR;
     FStopFlag: Boolean;
@@ -88,7 +88,7 @@ type
       const FilePath: string);
     function ReadTable(Table, Row, Field: Integer): string;
   public
-    constructor Create(AOwner: TComponent); override;
+    constructor Create; 
     destructor Destroy; override;
 
     procedure PrintReceipt2(Receipt: TReceipt; Params: TServerParams);
@@ -122,9 +122,9 @@ implementation
 
 { TFiscalPrinter }
 
-constructor TFiscalPrinter.Create(AOwner: TComponent);
+constructor TFiscalPrinter.Create;
 begin
-  inherited Create(AOwner);
+  inherited Create;
   FDriver := TDrvFR.Create(nil);
   FHeader := TTntStringList.Create;
   FTrailer := TTntStringList.Create;

@@ -9,6 +9,7 @@ uses
 type
   IFiscalPrinter = interface
   ['{2A352C19-4DFB-41DA-B4FD-4E85FF4A90AB}']
+    procedure Stop;
     procedure Connect;
     procedure Disconnect;
     procedure CashOutcome;
@@ -23,6 +24,7 @@ type
     procedure SetPassword(const Value: Integer);
     procedure PrintReceipt(Receipt: TReceipt; Params: TServerParams);
     procedure PrintNonfiscalReceipt(Receipt: TReceipt; Params: TServerParams);
+    procedure PrintReceipt2(Receipt: TReceipt; Params: TServerParams);
 
     property Connected: Boolean read GetConnected;
     property PrintWidth: Integer read GetPrintWidth;

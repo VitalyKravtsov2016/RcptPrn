@@ -78,6 +78,9 @@ type
     edtZReportFilePath: TEdit;
     lblZReportFilePath: TLabel;
     btnZReportFilePath: TButton;
+    lblDuplicateReceiptPath: TLabel;
+    edtDuplicateReceiptPath: TEdit;
+    btnDuplicateReceiptPath: TButton;
     procedure btnOkClick(Sender: TObject);
     procedure btnDefaultsClick(Sender: TObject);
     procedure btnReceiptMaskClick(Sender: TObject);
@@ -87,6 +90,7 @@ type
     procedure btnProcessedReportPathClick(Sender: TObject);
     procedure btnErrorReceiptPathClick(Sender: TObject);
     procedure btnZReportFilePathClick(Sender: TObject);
+    procedure btnDuplicateReceiptPathClick(Sender: TObject);
   private
     FParams: TServerParams;
     procedure UpdatePage(AParams: TServerParams);
@@ -277,6 +281,15 @@ begin
   S := edtZReportFilePath.Text;
   if BrowseFolder(Handle, S, '”кажите путь к папке', 0) then
     edtZReportFilePath.Text := S;
+end;
+
+procedure TfmSettings.btnDuplicateReceiptPathClick(Sender: TObject);
+var
+  S: string;
+begin
+  S := edtDuplicateReceiptPath.Text;
+  if BrowseFolder(Handle, S, '”кажите путь к папке', 0) then
+    edtDuplicateReceiptPath.Text := S;
 end;
 
 end.

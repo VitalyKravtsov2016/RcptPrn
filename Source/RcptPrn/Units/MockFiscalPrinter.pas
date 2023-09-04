@@ -11,6 +11,7 @@ type
 
   TMockFiscalPrinter = class(TInterfacedObject, IFiscalPrinter)
   private
+    procedure Stop;
     procedure Connect;
     procedure Disconnect;
     procedure CashOutcome;
@@ -25,6 +26,7 @@ type
     procedure SetPassword(const Value: Integer);
     procedure PrintReceipt(Receipt: TReceipt; Params: TServerParams);
     procedure PrintNonfiscalReceipt(Receipt: TReceipt; Params: TServerParams);
+    procedure PrintReceipt2(Receipt: TReceipt; Params: TServerParams);
   end;
 
 implementation
@@ -104,6 +106,17 @@ end;
 procedure TMockFiscalPrinter.OpenSession;
 begin
   ODS('TMockFiscalPrinter.OpenSession');
+end;
+
+procedure TMockFiscalPrinter.PrintReceipt2(Receipt: TReceipt;
+  Params: TServerParams);
+begin
+
+end;
+
+procedure TMockFiscalPrinter.Stop;
+begin
+
 end;
 
 end.

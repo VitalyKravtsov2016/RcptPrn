@@ -1,43 +1,43 @@
 
---------------------------------2022/9/19 20:55:00--------------------------------
+--------------------------------2023/9/4 15:02:33--------------------------------
 A memory block has been leaked. The size is: 36
 
-This block was allocated by thread 0x4A5C, and the stack trace (return addresses) at the time was:
+This block was allocated by thread 0x14EC, and the stack trace (return addresses) at the time was:
 402E18 
-4FE825 
+4FE035 
 404D28 
-4B4F73 
-500CA3 
-5001AB 
-4FF3D4 
-4FE9A9 
-4FE6C9 
-4FEBFC 
-48181B 
+4B51DB 
+500CAF 
+5001B7 
+4FF08D 
+4FE1BB 
+4FDED9 
+4FE410 
+481823 
 
 The block is currently used for an object of class: Unknown
 
-The allocation number is: 31976
+The allocation number is: 9015
 
-Current memory dump of 256 bytes starting at pointer address 7FDACD90:
-5B 32 30 3A 35 34 3A 35 39 5D 20 CF F0 E8 ED F2 E5 F0 20 F7 E5 EA EE E2 20 EE F1 F2 E0 ED EE E2
-EB E5 ED 00 F8 38 A0 7C 00 00 00 00 E1 6E DA 7F 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-34 81 00 00 18 2E 40 00 47 3B 40 00 22 3F 40 00 A2 5F 43 00 36 97 42 00 BB 78 49 00 01 AE 49 00
-C7 59 47 00 44 4C 42 00 75 4E 42 00 7D 62 42 00 5C 4A 00 00 5C 4A 00 00 65 3B 40 00 6D 3F 40 00
-0B 60 43 00 AB 3B 40 00 E0 79 49 00 65 3B 40 00 6D 3F 40 00 EF 67 43 00 AE AF 49 00 7D AF 49 00
-1E 0E 4A 00 24 00 00 00 A8 47 43 00 FC 28 F6 85 90 DC 50 00 90 DF 50 00 90 DF 50 00 90 DF 50 00
-90 DF 50 00 90 DF 50 00 90 DF 50 00 90 DF 50 00 90 DF 50 00 03 D7 09 7A 00 00 00 00 C1 C2 DA 7F
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 EB 80 00 00 18 2E 40 00 47 3B 40 00 22 3F 40 00
-[  2  0  :  5  4  :  5  9  ]     œ    Ë  Ì  Ú  Â       ˜  Â  Í  Ó  ‚     Ó  Ò  Ú  ‡  Ì  Ó  ‚
-Î  Â  Ì  .  ¯  8  †  |  .  .  .  .  ·  n  ⁄    .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
-4  Å  .  .  .  .  @  .  G  ;  @  .  "  ?  @  .  ¢  _  C  .  6  ó  B  .  ª  x  I  .  .  Æ  I  .
-«  Y  G  .  D  L  B  .  u  N  B  .  }  b  B  .  \  J  .  .  \  J  .  .  e  ;  @  .  m  ?  @  .
-.  `  C  .  ´  ;  @  .  ‡  y  I  .  e  ;  @  .  m  ?  @  .  Ô  g  C  .  Æ  Ø  I  .  }  Ø  I  .
-.  .  J  .  $  .  .  .  ®  G  C  .  ¸  (  ˆ  Ö  ê  ‹  P  .  ê  ﬂ  P  .  ê  ﬂ  P  .  ê  ﬂ  P  .
-ê  ﬂ  P  .  ê  ﬂ  P  .  ê  ﬂ  P  .  ê  ﬂ  P  .  ê  ﬂ  P  .  .  ◊  .  z  .  .  .  .  ¡  ¬  ⁄  
-.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  Î  Ä  .  .  .  .  @  .  G  ;  @  .  "  ?  @  .
+Current memory dump of 256 bytes starting at pointer address 7FD455B0:
+5B 31 35 3A 30 32 3A 33 31 5D 20 CF F0 E8 ED F2 E5 F0 20 F7 E5 EA EE E2 20 EE F1 F2 E0 ED EE E2
+EB E5 ED 00 6A 60 A7 7C 00 00 00 00 81 54 D4 7F 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+41 28 00 00 18 2E 40 00 01 4B 40 00 2C 4B 40 00 BF 60 42 00 3C 4E 42 00 85 62 42 00 2A 51 42 00
+98 50 42 00 7A 9B 42 00 F2 7B 49 00 C6 B0 49 00 EC 14 00 00 EC 14 00 00 4D 4A 40 00 BB 58 40 00
+45 58 40 00 1B 3C 40 00 5E 3B 40 00 6D 3F 40 00 C1 AF 49 00 85 AF 49 00 26 0E 4A 00 85 AF 49 00
+E6 80 45 00 20 00 00 00 00 00 00 00 DC 37 A5 85 90 EC 50 00 90 EF 50 00 90 EF 50 00 90 EF 50 00
+90 EF 50 00 90 EF 50 00 90 EF 50 00 90 EF 50 00 23 C8 5A 7A 90 EF 50 00 00 00 00 00 E1 55 D4 7F
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 2C 28 00 00 18 2E 40 00 47 3B 40 00 22 3F 40 00
+[  1  5  :  0  2  :  3  1  ]     œ    Ë  Ì  Ú  Â       ˜  Â  Í  Ó  ‚     Ó  Ò  Ú  ‡  Ì  Ó  ‚
+Î  Â  Ì  .  j  `  ß  |  .  .  .  .  Å  T  ‘    .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+A  (  .  .  .  .  @  .  .  K  @  .  ,  K  @  .  ø  `  B  .  <  N  B  .  Ö  b  B  .  *  Q  B  .
+ò  P  B  .  z  õ  B  .  Ú  {  I  .  ∆  ∞  I  .  Ï  .  .  .  Ï  .  .  .  M  J  @  .  ª  X  @  .
+E  X  @  .  .  <  @  .  ^  ;  @  .  m  ?  @  .  ¡  Ø  I  .  Ö  Ø  I  .  &  .  J  .  Ö  Ø  I  .
+Ê  Ä  E  .     .  .  .  .  .  .  .  ‹  7  •  Ö  ê  Ï  P  .  ê  Ô  P  .  ê  Ô  P  .  ê  Ô  P  .
+ê  Ô  P  .  ê  Ô  P  .  ê  Ô  P  .  ê  Ô  P  .  #  »  Z  z  ê  Ô  P  .  .  .  .  .  ·  U  ‘  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ,  (  .  .  .  .  @  .  G  ;  @  .  "  ?  @  .
 
---------------------------------2022/9/19 20:55:00--------------------------------
+--------------------------------2023/9/4 15:02:33--------------------------------
 This application has leaked memory. The small block leaks are (excluding expected leaks registered by pointer):
 
 21 - 36 bytes: Unknown x 1

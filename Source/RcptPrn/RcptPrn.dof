@@ -114,8 +114,8 @@ IncludeVerInfo=1
 AutoIncBuild=1
 MajorVer=1
 MinorVer=0
-Release=34
-Build=75
+Release=35
+Build=77
 Debug=0
 PreRelease=0
 Special=0
@@ -126,14 +126,17 @@ CodePage=1251
 [Version Info Keys]
 CompanyName=ШТРИХ-М
 FileDescription=Принтер чеков
-FileVersion=1.0.34.75
+FileVersion=1.0.35.77
 InternalName=
 LegalCopyright=(C) ШТРИХ-М
 LegalTrademarks=
 OriginalFilename=RcptPrn.exe
 ProductName=Принтер чеков
-ProductVersion=1.34
+ProductVersion=1.35
 Comments=http://www.shtrih-m.ru
+[Excluded Packages]
+C:\Program Files (x86)\Borland\Delphi7\Projects\Bpl\JvControlsDesign70.bpl=JVCL Visual Controls
+C:\Program Files (x86)\Borland\Delphi7\Projects\Bpl\JvDlgsDesign70.bpl=JVCL Dialog Components
 [HistoryLists\hlDebugSourcePath]
 Count=1
 Item0=C:\Components\DUnit\src\

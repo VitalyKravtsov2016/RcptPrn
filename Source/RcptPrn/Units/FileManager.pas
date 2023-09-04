@@ -23,17 +23,16 @@ type
     FStopFlag: Boolean;
     FThread: TNotifyThread;
     FOnEvent: TServerEvent;
-    FPrinter: TFiscalPrinter;
     FEvents: TThreadList;
     FLock: TCriticalSection;
+    FProcessedFiles: TStrings;
+    FPrinter: IFiscalPrinter;
 
     procedure CheckStopFlag;
     procedure CheckZReportFiles;
-    procedure CheckReceiptFiles;
     procedure CheckPrinterStatus;
     procedure AddLog(const S: string);
     procedure AddError(const S: string);
-    procedure ThreadProc(Sender: TObject);
     procedure SetState(const Value: string);
     procedure ThreadTerminated(Sender: TObject);
     procedure PrintZReport(const FileName: string);
@@ -43,15 +42,17 @@ type
     procedure SendEvent(Sender: TObject; AEventType: TEventType; const S: string);
 
     property Receipt: TReceipt read FReceipt;
-    property Printer: TFiscalPrinter read FPrinter;
+    property Printer: IFiscalPrinter read FPrinter;
     procedure WriteLogHeader;
     procedure MoveFile2(const SrcFileName, DstFileName: string);
     procedure DeleteFile2(const FileName: string);
     procedure CopyFile2(const SrcFileName, DstFileName: string);
     procedure PrinterEvent(Sender: TObject; const Event: TPrinterEventObject);
     procedure PrinterEventsProc;
+    procedure ReceiptDuplicate(const FileName: string);
+    procedure UpdateProcessedFiles;
   public
-    constructor Create;
+    constructor Create(APrinter: IFiscalPrinter);
     destructor Destroy; override;
 
     procedure Lock;
@@ -61,15 +62,20 @@ type
     procedure Initialize;
     procedure PrintReportX;
     procedure PrintReportZ;
+    procedure CheckReceiptFiles;
     function Started: Boolean;
     procedure ShowPrinterProperties;
+    procedure ThreadProc(Sender: TObject);
     procedure PrintFile(const FileName: string);
+    function IsDuplicateReceiptFile(RecFileName: string): Boolean;
 
     property State: string read FState;
+    property ProcessedFiles: TStrings read FProcessedFiles;
     property OnEvent: TServerEvent read FOnEvent write FOnEvent;
   end;
 
 function gFileManager: TFileManager;
+procedure CreateDirectory(const DirPath: string);
 
 implementation
 
@@ -79,7 +85,7 @@ var
 function gFileManager: TFileManager;
 begin
   if FFileManager = nil then
-    FFileManager := TFileManager.Create;
+    FFileManager := TFileManager.Create(nil);
   Result := FFileManager;
 end;
 
@@ -110,14 +116,23 @@ end;
 
 { TFileManager }
 
-constructor TFileManager.Create;
+constructor TFileManager.Create(APrinter: IFiscalPrinter);
+var
+  FiscalPrinter: TFiscalPrinter;
 begin
   inherited Create;
   FLock := TCriticalSection.Create;
   FReceipt := TReceipt.Create;
   FEvents := TThreadList.Create;
-  FPrinter := TFiscalPrinter.Create(nil);
-  FPrinter.OnEvent := PrinterEvent;
+  FProcessedFiles := TStringList.Create;
+  if APrinter = nil then
+  begin
+    FiscalPrinter := TFiscalPrinter.Create;
+    FiscalPrinter.OnEvent := PrinterEvent;
+    APrinter := FiscalPrinter;
+  end;
+  FPrinter := APrinter;
+  UpdateProcessedFiles;
   SetState('Принтер чеков остановлен');
 end;
 
@@ -128,7 +143,8 @@ begin
   FEvents.Free;
   FThread.Free;
   FReceipt.Free;
-  FPrinter.Free;
+  FPrinter := nil;
+  FProcessedFiles.Free;
   inherited Destroy;
 end;
 
@@ -242,6 +258,13 @@ begin
     Printer.Connect;
     CheckStopFlag;
     AddLog(Format('Найден файл "%s"', [FileName]));
+    if IsDuplicateReceiptFile(FileName) then
+    begin
+      AddLog(Format('Файл дублирован "%s"', [FileName]));
+      ReceiptDuplicate(FileName);
+      Exit;
+    end;
+
     try
       Receipt.PrintWidth := Printer.PrintWidth;
       Receipt.LoadFromFile(FileName);
@@ -270,10 +293,61 @@ begin
   end;
 end;
 
+function TFileManager.IsDuplicateReceiptFile(RecFileName: string): Boolean;
+var
+  i: Integer;
+  FileName: string;
+begin
+  Result := False;
+  for i := 0 to FProcessedFiles.Count-1 do
+  begin
+    FileName := FProcessedFiles[i];
+    RecFileName := ChangeFileExt(ExtractFileName(RecFileName), '');
+    Result := Pos(RecFileName, FileName) > 0;
+    if Result then Break;
+  end;
+end;
+
+procedure TFileManager.UpdateProcessedFiles;
+var
+  i: Integer;
+  FileMask: string;
+  FileName: string;
+  FileNames: TFileNames;
+begin
+  FileNames := TFileNames.Create;
+  try
+    FileMask := IncludeTrailingBackSlash(Params.ProcessedReceiptPath) + '*.*';
+    FileNames.FindByMask(FileMask);
+
+    FProcessedFiles.Clear;
+    for i := 0 to FileNames.Count-1 do
+    begin
+      FileName := ExtractFileName(FileNames[i]);
+      FProcessedFiles.Add(FileName);
+    end;
+  finally
+    FileNames.Free;
+  end;
+end;
+
+procedure TFileManager.ReceiptDuplicate(const FileName: string);
+var
+  NewFileName: string;
+begin
+  if FileExists(FileName) then
+  begin
+    NewFileName := IncludeTrailingBackSlash(Params.DuplicateReceiptPath) +
+      ExtractFileName(FileName);
+
+    CreateDirectory(Params.DuplicateReceiptPath);
+    MoveFile2(FileName, NewFileName);
+  end;
+end;
+
 // Проверка новых файлов
 
 procedure TFileManager.CheckReceiptFiles;
-
 var
   i: Integer;
   FileName: string;
@@ -341,6 +415,7 @@ begin
             Params.FileNamePrefix + ChangeFileExt(ExtractFileName(FileName), '.txt');
         end;
         MoveFile2(FileName, NewFileName);
+        FProcessedFiles.Add(ExtractFileName(NewFileName));
       end;
       fmDelete:
         DeleteFile2(FileName);

@@ -1,10 +1,10 @@
 object fmSettings: TfmSettings
-  Left = 386
-  Top = 199
+  Left = 591
+  Top = 225
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
   Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080
-  ClientHeight = 384
+  ClientHeight = 432
   ClientWidth = 439
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,12 +17,12 @@ object fmSettings: TfmSettings
   Position = poMainFormCenter
   DesignSize = (
     439
-    384)
+    432)
   PixelsPerInch = 96
   TextHeight = 13
   object btnCancel: TButton
     Left = 360
-    Top = 352
+    Top = 400
     Width = 73
     Height = 25
     Anchors = [akRight, akBottom]
@@ -33,7 +33,7 @@ object fmSettings: TfmSettings
   end
   object btnOk: TButton
     Left = 280
-    Top = 352
+    Top = 400
     Width = 73
     Height = 25
     Anchors = [akRight, akBottom]
@@ -44,7 +44,7 @@ object fmSettings: TfmSettings
   end
   object btnDefaults: TButton
     Left = 8
-    Top = 352
+    Top = 400
     Width = 97
     Height = 25
     Anchors = [akLeft, akBottom]
@@ -56,7 +56,7 @@ object fmSettings: TfmSettings
     Left = 8
     Top = 8
     Width = 425
-    Height = 337
+    Height = 385
     ActivePage = tsMain
     Anchors = [akLeft, akTop, akRight, akBottom]
     TabOrder = 0
@@ -124,12 +124,12 @@ object fmSettings: TfmSettings
       Caption = 'Prometeo'
       DesignSize = (
         417
-        309)
+        357)
       object gbPrometeo: TGroupBox
         Left = 8
         Top = 8
         Width = 401
-        Height = 289
+        Height = 337
         Anchors = [akLeft, akTop, akRight, akBottom]
         Caption = #1057#1080#1089#1090#1077#1084#1072' Prometeo'
         Font.Charset = DEFAULT_CHARSET
@@ -141,7 +141,7 @@ object fmSettings: TfmSettings
         TabOrder = 0
         DesignSize = (
           401
-          289)
+          337)
         object lblReceiptMask: TLabel
           Left = 8
           Top = 24
@@ -293,24 +293,31 @@ object fmSettings: TfmSettings
       ImageIndex = 2
       DesignSize = (
         417
-        309)
+        357)
       object gbAfterProcess: TGroupBox
         Left = 8
         Top = 8
         Width = 401
-        Height = 201
+        Height = 241
         Anchors = [akLeft, akTop, akRight]
         Caption = #1055#1086#1089#1083#1077' '#1086#1073#1088#1072#1073#1086#1090#1082#1080
         TabOrder = 0
         DesignSize = (
           401
-          201)
+          241)
         object lblFileNamePrefix: TLabel
           Left = 72
           Top = 152
           Width = 143
           Height = 13
           Caption = #1055#1088#1077#1092#1080#1082#1089' '#1076#1083#1103' '#1092#1072#1081#1083#1086#1074' '#1095#1077#1082#1086#1074':'
+        end
+        object lblDuplicateReceiptPath: TLabel
+          Left = 16
+          Top = 184
+          Width = 117
+          Height = 13
+          Caption = #1055#1072#1087#1082#1072' '#1076#1083#1103' '#1076#1091#1073#1083#1080#1082#1072#1090#1086#1074':'
         end
         object edtProcessedReceiptPath: TEdit
           Left = 32
@@ -372,10 +379,29 @@ object fmSettings: TfmSettings
           TabOrder = 6
           Text = 'RU0001'
         end
+        object edtDuplicateReceiptPath: TEdit
+          Left = 32
+          Top = 208
+          Width = 321
+          Height = 21
+          Anchors = [akLeft, akTop, akRight]
+          TabOrder = 7
+          Text = 'C:\Program Files\'#1064#1058#1056#1048#1061'-'#1052'\'#1055#1088#1080#1085#1090#1077#1088' '#1095#1077#1082#1086#1074'\Data\Duplicate'
+        end
+        object btnDuplicateReceiptPath: TButton
+          Left = 360
+          Top = 206
+          Width = 24
+          Height = 24
+          Anchors = [akTop, akRight]
+          Caption = '...'
+          TabOrder = 8
+          OnClick = btnDuplicateReceiptPathClick
+        end
       end
       object cbAfterError: TGroupBox
         Left = 8
-        Top = 216
+        Top = 256
         Width = 401
         Height = 81
         Anchors = [akLeft, akTop, akRight]
@@ -418,7 +444,7 @@ object fmSettings: TfmSettings
       ImageIndex = 3
       DesignSize = (
         417
-        309)
+        357)
       object lblZReportFilePath: TLabel
         Left = 24
         Top = 248
@@ -430,12 +456,12 @@ object fmSettings: TfmSettings
         Left = 8
         Top = 40
         Width = 401
-        Height = 161
+        Height = 209
         Anchors = [akLeft, akTop, akRight, akBottom]
         TabOrder = 1
         DesignSize = (
           401
-          161)
+          209)
         object btnProcessedReportPath: TButton
           Left = 369
           Top = 118
@@ -521,7 +547,7 @@ object fmSettings: TfmSettings
       ImageIndex = 4
       DesignSize = (
         417
-        309)
+        357)
       object chbLogEnabled: TCheckBox
         Left = 8
         Top = 16
@@ -534,12 +560,12 @@ object fmSettings: TfmSettings
         Left = 8
         Top = 40
         Width = 401
-        Height = 257
+        Height = 305
         Anchors = [akLeft, akTop, akRight, akBottom]
         TabOrder = 1
         DesignSize = (
           401
-          257)
+          305)
         object lblLogPath: TLabel
           Left = 16
           Top = 40
@@ -563,7 +589,7 @@ object fmSettings: TfmSettings
       ImageIndex = 5
       DesignSize = (
         417
-        309)
+        357)
       object lblCashReceipts: TLabel
         Left = 8
         Top = 8
@@ -614,7 +640,7 @@ object fmSettings: TfmSettings
         Left = 8
         Top = 232
         Width = 393
-        Height = 65
+        Height = 113
         Anchors = [akLeft, akTop, akRight, akBottom]
         ScrollBars = ssVertical
         TabOrder = 2

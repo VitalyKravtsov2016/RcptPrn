@@ -31,6 +31,7 @@ type
     FDefErrorReceiptPath: string;
     FDefProcessedReportPath: string;
     FDefProcessedReceiptPath: string;
+    FDefDuplicateReceiptPath: string;
 
     function GetLogFilePath: string;
     function GetLogFileEnabled: Boolean;
@@ -57,6 +58,7 @@ type
     ReceiptFileTime: TDateTime;
     ProcessedReportPath: string;
     ProcessedReceiptPath: string;
+    DuplicateReceiptPath: string;
     ErrorReceiptPath: string;
     ZReportEnabled: Boolean;
     PollPrinter: Boolean;
@@ -161,6 +163,7 @@ begin
   FDefLogFilePath := IncludeTrailingBackSlash(ExtractFilePath(ParamStr(0))) + 'Logs';
   FDefProcessedReportPath := ExtractFilePath(ParamStr(0)) + 'Reports';
   FDefProcessedReceiptPath := ExtractFilePath(ParamStr(0)) + 'Receipts';
+  FDefDuplicateReceiptPath := ExtractFilePath(ParamStr(0)) + 'Duplicate';
   FDefErrorReceiptPath := ExtractFilePath(ParamStr(0)) + 'ErrorReceipts';
   DefZReportFilePath := ExtractFilePath(ParamStr(0)) + 'ZReports';
 end;
@@ -188,6 +191,7 @@ begin
   ReceiptMode := DefReceiptMode;
   ProcessedReportPath := FDefProcessedReportPath;
   ProcessedReceiptPath := FDefProcessedReceiptPath;
+  DuplicateReceiptPath := FDefDuplicateReceiptPath;
   ZReportEnabled := DefZReportEnabled;
   PollPrinter := DefPollPrinter;
   ReceiptCopyEnabled := DefReceiptCopyEnabled;
@@ -230,6 +234,7 @@ begin
       ReceiptMode := TFileMode(IniFile.ReadInteger('Settings', 'ReceiptMode', Ord(DefReceiptMode)));
       ProcessedReportPath := IniFile.ReadString('Settings', 'ProcessedReportPath', FDefProcessedReportPath);
       ProcessedReceiptPath := IniFile.ReadString('Settings', 'ProcessedReceiptPath', FDefProcessedReceiptPath);
+      DuplicateReceiptPath := IniFile.ReadString('Settings', 'DuplicateReceiptPath', FDefDuplicateReceiptPath);
       ReportFileTime := StrToDate(IniFile.ReadString('Settings', 'ReportFileTime', DateToStr(Now)));
       ReceiptFileTime := StrToDate(IniFile.ReadString('Settings', 'ReceiptFileTime', DateToStr(Now)));
       ZReportEnabled := IniFile.ReadBool('Settings', 'ZReportEnabled', DefZReportEnabled);
@@ -283,6 +288,7 @@ begin
       IniFile.WriteInteger('Settings', 'ReceiptMode', Ord(ReceiptMode));
       IniFile.WriteString('Settings', 'ProcessedReportPath', ProcessedReportPath);
       IniFile.WriteString('Settings', 'ProcessedReceiptPath', ProcessedReceiptPath);
+      IniFile.WriteString('Settings', 'DuplicateReceiptPath', DuplicateReceiptPath);
       IniFile.WriteString('Settings', 'ReportFileTime', DateToStr(ReportFileTime));
       IniFile.WriteString('Settings', 'ReceiptFileTime', DateToStr(ReceiptFileTime));
       IniFile.WriteBool('Settings', 'ZReportEnabled', ZReportEnabled);
