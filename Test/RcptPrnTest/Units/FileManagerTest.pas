@@ -32,6 +32,10 @@ implementation
 procedure TFileManagerTest.Setup;
 begin
   inherited Setup;
+  Params.ReceiptMode := fmDelete;
+  Params.ProcessedReceiptPath := GetModulePath + 'NewReceipt';
+  DeleteFile(GetModulePath + 'ProcessedFiles.txt');
+
   Printer := TMockFiscalPrinter.Create;
   Manager := TFileManager.Create(Printer);
 end;
@@ -48,14 +52,12 @@ var
   FileName: string;
   DstFileName: string;
 begin
-  CheckEquals(88, Manager.ProcessedFiles.Count, 'Manager.ProcessedFiles.Count');
-  CheckEquals(False, Manager.IsDuplicateReceiptFile('Test.txt'), 'IsDuplicateReceiptFile');
-  CheckEquals(True, Manager.IsDuplicateReceiptFile('RU000140878.P2T'), 'RU000140878.P2T');
-  CheckEquals(True, Manager.IsDuplicateReceiptFile('RU000140878.txt'), 'RU000140878.txt');
+  CheckEquals(0, Manager.ProcessedFiles.Count, 'Manager.ProcessedFiles.Count');
+  CheckEquals(False, Manager.IsDuplicateReceiptFile('RU000140878.P2T'), 'RU000140878.P2T');
 
   Params.ReceiptMask := GetModulePath + 'Fiscal\*.p2t';
   CreateDirectory(GetModulePath + 'Fiscal');
-  FileName := IncludeTrailingBackSlash(Params.ProcessedReceiptPath) + 'RU000140869.P2T';
+  FileName := GetModulePath + 'Receipts\' + 'RU000140869.P2T';
   DstFileName := IncludeTrailingBackSlash(GetModulePath + 'Fiscal\') + 'RU000140869.P2T';
   if FileExists(DstFileName) then
   begin
@@ -66,10 +68,19 @@ begin
   CheckEquals(True, Result, 'CopyFile failed: ' + DstFileName);
 
   CheckEquals(True, FileExists(DstFileName), 'FileExists(DstFileName) <> True');
+
+  Manager.ReceiptProcessed(DstFileName);
+  CheckEquals(1, Manager.ProcessedFiles.Count, 'Manager.ProcessedFiles.Count');
+  Result := Windows.CopyFile(PChar(FileName), PChar(DstFileName), True);
+  CheckEquals(True, Result, 'CopyFile failed: ' + DstFileName);
+
   Manager.CheckReceiptFiles;
   CheckEquals(False, FileExists(DstFileName), 'FileExists(DstFileName) <> False');
   DstFileName := IncludeTrailingBackSlash(Params.DuplicateReceiptPath) + 'RU000140869.P2T';
   CheckEquals(True, FileExists(DstFileName), 'FileExists(DstFileName) <> True');
+  DeleteFile(DstFileName);
+  RemoveDir(Params.DuplicateReceiptPath);
+  RemoveDir(GetModulePath + 'Fiscal');
 end;
 
 initialization

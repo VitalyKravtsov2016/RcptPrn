@@ -9,7 +9,7 @@ uses
   // This
   NotifyThread, Receipt, untVInfo, ServerParams, FiscalPrinter, untUtil,
   FileNames, ShellAPI2, untLogFile, AppLogger, FiscalPrinterIntf,
-  MockFiscalPrinter, Semaphore, fmuMessage;
+  MockFiscalPrinter, Semaphore, fmuMessage, FileUtils;
 
 type
   TServerEvent = procedure (Sender: TObject; EventType: TEventType; const S: string) of object;
@@ -38,7 +38,6 @@ type
     procedure PrintZReport(const FileName: string);
     procedure ErrorReceipt(const FileName: string);
     procedure ZReportProcessed(const FileName: string);
-    procedure ReceiptProcessed(const FileName: string);
     procedure SendEvent(Sender: TObject; AEventType: TEventType; const S: string);
 
     property Receipt: TReceipt read FReceipt;
@@ -67,6 +66,7 @@ type
     procedure ShowPrinterProperties;
     procedure ThreadProc(Sender: TObject);
     procedure PrintFile(const FileName: string);
+    procedure ReceiptProcessed(const FileName: string);
     function IsDuplicateReceiptFile(RecFileName: string): Boolean;
 
     property State: string read FState;
@@ -315,20 +315,39 @@ var
   FileName: string;
   FileNames: TFileNames;
 begin
+  FileName := GetModulePath + 'ProcessedFiles.txt';
+  if FileExists(FileName) then
+  begin
+    try
+      FProcessedFiles.LoadFromFile(FileName);
+    except
+      on E: Exception do
+      begin
+        AddLog('Ошибка чтения списка обработанных файлов из ' + FileName + ': ' + E.Message);
+      end;
+    end;
+  end;
+
   FileNames := TFileNames.Create;
   try
     FileMask := IncludeTrailingBackSlash(Params.ProcessedReceiptPath) + '*.*';
     FileNames.FindByMask(FileMask);
 
-    FProcessedFiles.Clear;
-    for i := 0 to FileNames.Count-1 do
+    if FProcessedFiles.Count = 0 then
     begin
-      FileName := ExtractFileName(FileNames[i]);
-      FProcessedFiles.Add(FileName);
+      for i := 0 to FileNames.Count-1 do
+      begin
+        FileName := ExtractFileName(FileNames[i]);
+        FProcessedFiles.Add(FileName);
+      end;
     end;
-  finally
-    FileNames.Free;
+  except
+    on E: Exception do
+    begin
+      AddLog('Ошибка обновления списка обработанных файлов: ' + E.Message);
+    end;
   end;
+  FileNames.Free;
 end;
 
 procedure TFileManager.ReceiptDuplicate(const FileName: string);
@@ -399,7 +418,26 @@ end;
 procedure TFileManager.ReceiptProcessed(const FileName: string);
 var
   NewFileName: string;
+  ProcessedFileName: string;
+const
+  MaxProcessedFilesCount = 100;
 begin
+  FProcessedFiles.Add(ExtractFileName(FileName));
+  try
+    while FProcessedFiles.Count > MaxProcessedFilesCount do
+    begin
+      FProcessedFiles.Delete(0);
+    end;
+    ProcessedFileName := GetModulePath + 'ProcessedFiles.txt';
+    FProcessedFiles.SaveToFile(ProcessedFileName);
+  except
+    on E: Exception do
+    begin
+      AddLog(Format('Ошибка сохранения списка файлов в %s: %s', [
+        ProcessedFileName, E.Message]));
+    end;
+  end;
+
   if FileExists(FileName) then
   begin
     case Params.ReceiptMode of
@@ -415,7 +453,6 @@ begin
             Params.FileNamePrefix + ChangeFileExt(ExtractFileName(FileName), '.txt');
         end;
         MoveFile2(FileName, NewFileName);
-        FProcessedFiles.Add(ExtractFileName(NewFileName));
       end;
       fmDelete:
         DeleteFile2(FileName);

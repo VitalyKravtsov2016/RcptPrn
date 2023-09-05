@@ -16,7 +16,7 @@ del %DcuDir%\*.dcu /Q
 cd ..\..
 
 ISCC Setup.iss
-move .\Output\setup.exe RcptPrn_1.35.exe
+move .\Output\setup.exe RcptPrn_1.36.exe
 
 rd Output
 del *.dcu /S /Q

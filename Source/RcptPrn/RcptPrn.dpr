@@ -30,7 +30,8 @@ uses
   DrvFRLib_TLB in 'Units\DrvFRLib_TLB.pas',
   Semaphore in 'Units\Semaphore.pas',
   fmuMessage in 'Forms\fmuMessage.pas' {fmMessage},
-  fmuPrinter in 'Forms\fmuPrinter.pas' {fmPrinter};
+  fmuPrinter in 'Forms\fmuPrinter.pas' {fmPrinter},
+  FileUtils in '..\Shared\FileUtils.pas';
 
 {$R *.RES}
 
