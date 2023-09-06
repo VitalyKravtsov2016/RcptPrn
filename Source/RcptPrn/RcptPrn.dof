@@ -100,7 +100,7 @@ Conditionals=
 DebugSourceDirs=
 UsePackages=1
 [Parameters]
-RunParams=-XReport
+RunParams=-ShowSettingsDlg
 HostApplication=
 Launcher=
 UseLauncher=0

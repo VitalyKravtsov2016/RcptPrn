@@ -1,12 +1,12 @@
 [Setup]
 AppName="ШТРИХ-М: Принтер чеков"
-AppVerName="ШТРИХ-М: Принтер чеков 1.36"
+AppVerName="ШТРИХ-М: Принтер чеков 1.37"
 DefaultDirName={pf}\ШТРИХ-М\Принтер чеков
 DefaultGroupName=ШТРИХ-М\Принтер чеков
 UninstallDisplayIcon={app}\Uninstall.exe
 AllowNoIcons=Yes
 
-AppVersion=1.36
+AppVersion=1.37
 AppPublisher=ШТРИХ-М
 AppPublisherURL=http://www.shtrih-m.ru
 AppSupportURL=http://www.shtrih-m.ru
@@ -18,8 +18,8 @@ AppCopyright="Copyright © 2023 ШТРИХ-М  ©®™"
 ;Версия
 VersionInfoCompany="ШТРИХ-М"
 VersionInfoDescription="Принтер чеков"
-VersionInfoTextVersion="1.36.0.0"
-VersionInfoVersion=1.36.0.0
+VersionInfoTextVersion="1.37.0.0"
+VersionInfoVersion=1.37.0.0
 OutputBaseFilename=setup
 [Languages]
 Name: "ru"; MessagesFile: "compiler:languages\Russian.isl"
@@ -46,7 +46,7 @@ Name: "{group}\История версий"; Filename: "{app}\History.txt";
 ; Документация
 Name: "{group}\Документация"; Filename: "{app}\Doc\ПринтерЧеков.pdf";
 ; Основные
-Name: "{group}\Принтер чеков 1.36"; Filename: "{app}\RcptPrn.exe"; WorkingDir: "{app}";
+Name: "{group}\Принтер чеков 1.37"; Filename: "{app}\RcptPrn.exe"; WorkingDir: "{app}";
 Name: "{group}\Удалить"; Filename: "{uninstallexe}"
 Name: "{group}\Снять X-отчет"; Filename: "{app}\RcptPrn.exe"; Parameters: "-XReport"; IconFilename: "{app}\Report.ico";
 Name: "{group}\Снять Z-отчет"; Filename: "{app}\RcptPrn.exe"; Parameters: "-ZReport"; IconFilename: "{app}\Report.ico";
@@ -55,8 +55,8 @@ Name: "{commonstartup}\Принтер чеков"; Filename: "{app}\RcptPrn.exe"; WorkingDir
 ; Иконки на рабочем столе
 Name: "{userdesktop}\Снять X-отчет"; Filename: "{app}\RcptPrn.exe"; Parameters: "-XReport"; Tasks: zreporticon; IconFilename: "{app}\Report.ico";
 Name: "{userdesktop}\Снять Z-отчет"; Filename: "{app}\RcptPrn.exe"; Parameters: "-ZReport"; Tasks: xreporticon; IconFilename: "{app}\Report.ico";
-Name: "{userdesktop}\Принтер чеков 1.36"; Filename: "{app}\RcptPrn.exe"; Tasks: desktopicon
-Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\Принтер чеков 1.36"; Filename: "{app}\RcptPrn.exe"; Tasks: quicklaunchicon
+Name: "{userdesktop}\Принтер чеков 1.37"; Filename: "{app}\RcptPrn.exe"; Tasks: desktopicon
+Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\Принтер чеков 1.37"; Filename: "{app}\RcptPrn.exe"; Tasks: quicklaunchicon
 [Run]
 Filename: "{app}\RcptPrn.exe"; Description: "Запустить приложение"; Flags: postinstall nowait skipifsilent skipifdoesntexist;
 

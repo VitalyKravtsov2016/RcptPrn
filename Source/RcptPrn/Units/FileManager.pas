@@ -310,15 +310,13 @@ end;
 
 procedure TFileManager.UpdateProcessedFiles;
 var
-  i: Integer;
-  FileMask: string;
   FileName: string;
-  FileNames: TFileNames;
 begin
   FileName := GetModulePath + 'ProcessedFiles.txt';
   if FileExists(FileName) then
   begin
     try
+      FProcessedFiles.Clear;
       FProcessedFiles.LoadFromFile(FileName);
     except
       on E: Exception do
@@ -327,27 +325,6 @@ begin
       end;
     end;
   end;
-
-  FileNames := TFileNames.Create;
-  try
-    FileMask := IncludeTrailingBackSlash(Params.ProcessedReceiptPath) + '*.*';
-    FileNames.FindByMask(FileMask);
-
-    if FProcessedFiles.Count = 0 then
-    begin
-      for i := 0 to FileNames.Count-1 do
-      begin
-        FileName := ExtractFileName(FileNames[i]);
-        FProcessedFiles.Add(FileName);
-      end;
-    end;
-  except
-    on E: Exception do
-    begin
-      AddLog('Ошибка обновления списка обработанных файлов: ' + E.Message);
-    end;
-  end;
-  FileNames.Free;
 end;
 
 procedure TFileManager.ReceiptDuplicate(const FileName: string);
@@ -547,6 +524,7 @@ begin
   LogFile.AddLine(' Возврат продажи в файле            : ' + Params.ReturnSale);
   LogFile.AddLine(' Режим чеков                        : ' + FileModeToStr[Params.ReceiptMode]);
   LogFile.AddLine(' Папка чеков                        : ' + Params.ProcessedReceiptPath);
+  LogFile.AddLine(' Папка дубликатов                   : ' + Params.DuplicateReceiptPath);
   LogFile.AddLine(' Дата последнего чека               : ' +
     FormatDateTime('dd.mm.yyyy hh:nn:ss.zzz', Params.ReceiptFileTime));
   LogFile.AddLine(' Разрешить снятие Z-отчетов         : ' + BoolToStr[Params.ZReportEnabled]);

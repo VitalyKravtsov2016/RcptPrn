@@ -69,7 +69,13 @@ begin
 
   CheckEquals(True, FileExists(DstFileName), 'FileExists(DstFileName) <> True');
 
+
+  CheckEquals(False, Manager.IsDuplicateReceiptFile('Test.txt'));
+  CheckEquals(False, Manager.IsDuplicateReceiptFile(DstFileName));
   Manager.ReceiptProcessed(DstFileName);
+  CheckEquals(True, Manager.IsDuplicateReceiptFile(DstFileName));
+  CheckEquals(False, Manager.IsDuplicateReceiptFile('Test.txt'));
+
   CheckEquals(1, Manager.ProcessedFiles.Count, 'Manager.ProcessedFiles.Count');
   Result := Windows.CopyFile(PChar(FileName), PChar(DstFileName), True);
   CheckEquals(True, Result, 'CopyFile failed: ' + DstFileName);

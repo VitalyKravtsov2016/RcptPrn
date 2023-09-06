@@ -53,6 +53,13 @@ begin
       Exit;
     end;
 
+    Result := FindCmdLineSwitch('ShowSettingsDlg', ['-', '/'], True);
+    if Result then
+    begin
+      ShowSettingsDlg(Params);
+      Exit;
+    end;
+
   except
     on E: Exception do
     begin

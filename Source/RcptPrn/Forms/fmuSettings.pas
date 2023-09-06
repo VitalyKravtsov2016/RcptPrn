@@ -136,6 +136,7 @@ begin
   rbRecDelete.Checked := AParams.ReceiptMode = fmDelete;
   rbRecSaveTime.Checked := AParams.ReceiptMode = fmSaveTime;
   edtProcessedReceiptPath.Text := AParams.ProcessedReceiptPath;
+  edtDuplicateReceiptPath.Text := AParams.DuplicateReceiptPath;
   edtErrorReceiptPath.Text := AParams.ErrorReceiptPath;
   chbCopyErrorReceipts.Checked := AParams.CopyErrorReceipts;
   chbChangeFileName.Checked := AParams.ChangeFileName;
@@ -183,6 +184,7 @@ begin
   if rbRecDelete.Checked then AParams.ReceiptMode := fmDelete;
   if rbRecSaveTime.Checked then AParams.ReceiptMode := fmSaveTime;
   AParams.ProcessedReceiptPath := edtProcessedReceiptPath.Text;
+  AParams.DuplicateReceiptPath := edtDuplicateReceiptPath.Text;
   AParams.ErrorReceiptPath := edtErrorReceiptPath.Text;
   AParams.CopyErrorReceipts := chbCopyErrorReceipts.Checked;
   // Закладка "Отчеты"

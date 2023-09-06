@@ -15,8 +15,11 @@ dcc32 -E%BinDir% -N%DcuDir% -Q RcptPrn.dpr
 del %DcuDir%\*.dcu /Q
 cd ..\..
 
+signtool sign /tr http://rfc3161timestamp.globalsign.com/advanced /td sha256 /fd sha256 /n "SHTRIH-M JSC" %BinDir%\RcptPrn.exe
+
 ISCC Setup.iss
-move .\Output\setup.exe RcptPrn_1.36.exe
+signtool sign /tr http://rfc3161timestamp.globalsign.com/advanced /td sha256 /fd sha256 /n "SHTRIH-M JSC" .\Output\setup.exe
+move .\Output\setup.exe RcptPrn_1.37.exe
 
 rd Output
 del *.dcu /S /Q
