@@ -61,8 +61,8 @@ type
     procedure Initialize;
     procedure PrintReportX;
     procedure PrintReportZ;
-    procedure CheckReceiptFiles;
     function Started: Boolean;
+    function CheckReceiptFiles: Boolean;
     procedure ShowPrinterProperties;
     procedure ThreadProc(Sender: TObject);
     procedure PrintFile(const FileName: string);
@@ -343,12 +343,13 @@ end;
 
 // Проверка новых файлов
 
-procedure TFileManager.CheckReceiptFiles;
+function TFileManager.CheckReceiptFiles: Boolean;
 var
   i: Integer;
   FileName: string;
   FileNames: TFileNames;
 begin
+  Result := False;
   FileNames := TFileNames.Create;
   try
     if Params.ReceiptMode = fmSaveTime then
@@ -358,6 +359,7 @@ begin
 
     for i := 0 to FileNames.Count-1 do
     begin
+      Result := True;
       FileName := FileNames[i];
       if not IsReportFile(FileName) then
         PrintFile(FileName);
@@ -574,7 +576,10 @@ begin
             CheckPrinterStatus;
           // Проверка файлов
           CheckZReportFiles;
-          CheckReceiptFiles;
+          if CheckReceiptFiles and Params.StopAfterFile then
+          begin
+            Abort;
+          end;
           Sleep(500);
         except
           on E: Exception do
@@ -623,6 +628,7 @@ end;
 procedure TFileManager.Start;
 begin
   if Started then Exit;
+  FThread.Free;
   FThread := TNotifyThread.CreateThread(ThreadProc);
   FThread.OnTerminate := ThreadTerminated;
 end;
@@ -631,8 +637,6 @@ procedure TFileManager.Stop;
 begin
   FPrinter.Stop;
   FStopFlag := True;
-  FThread.Free;
-  FThread := nil;
 end;
 
 procedure TFileManager.SendEvent(Sender: TObject; AEventType: TEventType;

@@ -81,6 +81,7 @@ type
     lblDuplicateReceiptPath: TLabel;
     edtDuplicateReceiptPath: TEdit;
     btnDuplicateReceiptPath: TButton;
+    chbStopAfterFile: TCheckBox;
     procedure btnOkClick(Sender: TObject);
     procedure btnDefaultsClick(Sender: TObject);
     procedure btnReceiptMaskClick(Sender: TObject);
@@ -125,6 +126,7 @@ begin
   chbPollPrinter.Checked := AParams.PollPrinter;
   chbUnknownPaytypeEnabled.Checked := AParams.UnknownPaytypeEnabled;
   chbReceiptCopyEnabled.Checked := AParams.ReceiptCopyEnabled;
+  chbStopAfterFile.Checked := AParams.StopAfterFile;
   edtFRPassword.Text := IntToStr(AParams.DriverPassword);
   // Закладка "Prometeo"
   edtReceiptMask.Text := AParams.ReceiptMask;
@@ -171,6 +173,7 @@ begin
   AParams.BarcodeEnabled := chbBarcodeEnabled.Checked;
   AParams.UnknownPaytypeEnabled := chbUnknownPaytypeEnabled.Checked;
   AParams.ReceiptCopyEnabled := chbReceiptCopyEnabled.Checked;
+  AParams.StopAfterFile := chbStopAfterFile.Checked;
   AParams.DriverPassword := StrToInt(edtFRPassword.Text);
   // Закладка "Prometeo"
   AParams.ReceiptMask := edtReceiptMask.Text;

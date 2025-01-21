@@ -94,7 +94,7 @@ OutputDir=Bin
 UnitOutputDir=DCU
 PackageDLLOutputDir=
 PackageDCPOutputDir=
-SearchPath=
+SearchPath=$(DELPHI)\Lib\Debug;C:\PROGRA~2\Borland\Delphi7\Comp\jcl\lib\d7\debug
 Packages=VCL50;VCLX50;VCLSMP50;VCLDB50;VCLADO50;ibevnt50;VCLBDE50;VCLDBX50;VCLIE50;INETDB50;INET50;VCLMID50;WEBMID50;dclocx50;dclaxserver50;QRPT50;TEEQR50;NMFAST50;TEEUI50;TEEDB50;TEE50;DSS50;RXCTL5;RXBDE5;RXDB5;Dclusr50
 Conditionals=MALINA
 DebugSourceDirs=C:\Components\DUnit\src\
@@ -135,8 +135,7 @@ ProductName=
 ProductVersion=1.0.0.0
 Comments=
 [Excluded Packages]
-C:\WINDOWS\system32\OO_delphi_bridge.bpl=(untitled)
-C:\Program Files\Borland\Delphi7\LibIndy\dclindy70.bpl=Internet Direct (Indy) for D7 Property and Component Editors
+C:\Program Files (x86)\Borland\Delphi7\Projects\Bpl\JvControlsDesign70.bpl=JVCL Visual Controls
 [HistoryLists\hlDebugSourcePath]
 Count=1
 Item0=C:\Components\DUnit\src\
@@ -144,9 +143,10 @@ Item0=C:\Components\DUnit\src\
 Count=1
 Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
 [HistoryLists\hlSearchPath]
-Count=2
-Item0=$(DELPHI)\Lib\Debug;C:\COMPON~1\JVCL\jcl\lib\d7\debug;C:\COMPON~1\jcl\lib\d7\debug
-Item1=$(DELPHI)\Lib\Debug
+Count=3
+Item0=$(DELPHI)\Lib\Debug;C:\PROGRA~2\Borland\Delphi7\Comp\jcl\lib\d7\debug
+Item1=$(DELPHI)\Lib\Debug;C:\COMPON~1\JVCL\jcl\lib\d7\debug;C:\COMPON~1\jcl\lib\d7\debug
+Item2=$(DELPHI)\Lib\Debug
 [HistoryLists\hlUnitOutputDirectory]
 Count=2
 Item0=DCU

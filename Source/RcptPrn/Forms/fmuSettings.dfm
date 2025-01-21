@@ -75,7 +75,7 @@ object fmSettings: TfmSettings
         Top = 168
         Width = 153
         Height = 21
-        TabOrder = 5
+        TabOrder = 6
         Text = '30'
         OnKeyPress = edtFRPasswordKeyPress
       end
@@ -118,6 +118,14 @@ object fmSettings: TfmSettings
         Height = 17
         Caption = #1055#1077#1095#1072#1090#1072#1090#1100' '#1082#1086#1087#1080#1102' '#1095#1077#1082#1086#1074
         TabOrder = 4
+      end
+      object chbStopAfterFile: TCheckBox
+        Left = 8
+        Top = 136
+        Width = 361
+        Height = 17
+        Caption = #1054#1089#1090#1072#1085#1072#1074#1083#1080#1074#1072#1090#1100' '#1089#1077#1088#1074#1077#1088' '#1087#1086#1089#1083#1077' '#1087#1077#1095#1072#1090#1080' '#1092#1072#1081#1083#1072
+        TabOrder = 5
       end
     end
     object tsPrometeo: TTabSheet

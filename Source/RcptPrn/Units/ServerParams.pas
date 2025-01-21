@@ -71,6 +71,7 @@ type
     SaveZReportEnabled: Boolean;
     ZReportFilePath: string;
     DefZReportFilePath: string;
+    StopAfterFile: Boolean;
 
     constructor Create;
     destructor Destroy; override;
@@ -104,6 +105,7 @@ const
   DefCopyErrorReceipts          = True;
   DefReceiptCopyEnabled         = False;
   DefReceiptEncoding            = ReceiptEncodingCP866;
+  DefStopAfterFile              = True;
 
 function Params: TServerParams;
 function GetLastWriteTime(const FileName: string): TDateTime;
@@ -181,6 +183,7 @@ end;
 
 procedure TServerParams.SetDefaults;
 begin
+  StopAfterFile := DefStopAfterFile;
   ReceiptMask := DefReceiptMask;
   ZReportMask := DefZReportMask;
   ReturnSale := DefReturnSale;
@@ -256,6 +259,7 @@ begin
 
       SaveZReportEnabled := IniFile.ReadBool('Settings', 'SaveZReportEnabled', True);
       ZReportFilePath := IniFile.ReadString('Settings', 'ZReportFilePath', DefZReportFilePath);
+      StopAfterFile := IniFile.ReadBool('Settings', 'StopAfterFile', DefStopAfterFile);
     finally
       IniFile.Free;
     end;
@@ -308,6 +312,7 @@ begin
 
       IniFile.WriteBool('Settings', 'SaveZReportEnabled', SaveZReportEnabled);
       IniFile.WriteString('Settings', 'ZReportFilePath', ZReportFilePath);
+      IniFile.WriteBool('Settings', 'StopAfterFile', StopAfterFile);
     finally
       IniFile.Free;
     end;
