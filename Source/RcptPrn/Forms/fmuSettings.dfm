@@ -70,8 +70,15 @@ object fmSettings: TfmSettings
         Height = 13
         Caption = #1055#1072#1088#1086#1083#1100' '#1072#1076#1084#1080#1085#1080#1089#1090#1088#1072#1090#1086#1088#1072' '#1060#1056':'
       end
+      object lblFileDelay: TLabel
+        Left = 16
+        Top = 208
+        Width = 225
+        Height = 13
+        Caption = #1047#1072#1076#1077#1088#1078#1082#1072' '#1087#1077#1088#1077#1076' '#1086#1073#1088#1072#1073#1086#1090#1082#1086#1081' '#1092#1072#1081#1083#1072', '#1089#1077#1082#1091#1085#1076':'
+      end
       object edtFRPassword: TEdit
-        Left = 176
+        Left = 224
         Top = 168
         Width = 153
         Height = 21
@@ -126,6 +133,16 @@ object fmSettings: TfmSettings
         Height = 17
         Caption = #1054#1089#1090#1072#1085#1072#1074#1083#1080#1074#1072#1090#1100' '#1089#1077#1088#1074#1077#1088' '#1087#1086#1089#1083#1077' '#1087#1077#1095#1072#1090#1080' '#1092#1072#1081#1083#1072
         TabOrder = 5
+      end
+      object seFileDelay: TSpinEdit
+        Left = 256
+        Top = 208
+        Width = 121
+        Height = 22
+        MaxValue = 60
+        MinValue = 0
+        TabOrder = 7
+        Value = 0
       end
     end
     object tsPrometeo: TTabSheet

@@ -258,6 +258,10 @@ begin
     Printer.Connect;
     CheckStopFlag;
     AddLog(Format('Найден файл "%s"', [FileName]));
+
+    // FileDelay in seconds
+    Sleep(Params.FileDelay * 1000);
+
     if IsDuplicateReceiptFile(FileName) then
     begin
       AddLog(Format('Файл дублирован "%s"', [FileName]));

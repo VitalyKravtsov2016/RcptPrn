@@ -72,6 +72,7 @@ type
     ZReportFilePath: string;
     DefZReportFilePath: string;
     StopAfterFile: Boolean;
+    FileDelay: Integer;
 
     constructor Create;
     destructor Destroy; override;
@@ -106,6 +107,7 @@ const
   DefReceiptCopyEnabled         = False;
   DefReceiptEncoding            = ReceiptEncodingCP866;
   DefStopAfterFile              = True;
+  DefFileDelay                  = 0;
 
 function Params: TServerParams;
 function GetLastWriteTime(const FileName: string): TDateTime;
@@ -183,7 +185,6 @@ end;
 
 procedure TServerParams.SetDefaults;
 begin
-  StopAfterFile := DefStopAfterFile;
   ReceiptMask := DefReceiptMask;
   ZReportMask := DefZReportMask;
   ReturnSale := DefReturnSale;
@@ -214,6 +215,8 @@ begin
   CashlessNames.Clear;
   CashlessNames.Add('ОПЛАТА КАРТОЙ');
   ReceiptEncoding := DefReceiptEncoding;
+  StopAfterFile := DefStopAfterFile;
+  FileDelay := DefFileDelay;
 end;
 
 // Загрузка параметров приложения из Ini файла
@@ -260,6 +263,7 @@ begin
       SaveZReportEnabled := IniFile.ReadBool('Settings', 'SaveZReportEnabled', True);
       ZReportFilePath := IniFile.ReadString('Settings', 'ZReportFilePath', DefZReportFilePath);
       StopAfterFile := IniFile.ReadBool('Settings', 'StopAfterFile', DefStopAfterFile);
+      FileDelay := IniFile.ReadInteger('Settings', 'FileDelay', DefFileDelay);
     finally
       IniFile.Free;
     end;
@@ -313,6 +317,7 @@ begin
       IniFile.WriteBool('Settings', 'SaveZReportEnabled', SaveZReportEnabled);
       IniFile.WriteString('Settings', 'ZReportFilePath', ZReportFilePath);
       IniFile.WriteBool('Settings', 'StopAfterFile', StopAfterFile);
+      IniFile.WriteInteger('Settings', 'FileDelay', FileDelay);
     finally
       IniFile.Free;
     end;

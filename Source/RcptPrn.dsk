@@ -1,14 +1,14 @@
 [Closed Files]
-File_0=SourceModule,'D:\Projects\RcptPrn\Source\RcptPrn\Forms\fmuPrinter.pas',0,1,179,38,194,1,0
-File_1=SourceModule,'D:\Projects\RcptPrn\Source\RcptPrn\Forms\fmuMain.pas',0,1,1,1,1,1,1
-File_2=SourceModule,'D:\Projects\RcptPrn\Source\RcptPrn\Units\FileManager.pas',0,1,1,32,7,0,0
-File_3=SourceModule,'D:\Projects\RcptPrn\Source\RcptPrn\Forms\fmuSettings.pas',0,1,1,8,10,1,0
-File_4=SourceModule,'D:\Projects\RcptPrn\Source\RcptPrn\Units\ServerParams.pas',0,1,1,29,13,0,0
-File_5=SourceModule,'c:\program files (x86)\borland\delphi7\Comp\FastMM\FastMM4Messages.pas',0,1,120,28,133,0,0
-File_6=SourceModule,'D:\projects\RcptPrn\Source\Shared\FileUtils.pas',0,1,1,30,12,0,0
-File_7=SourceModule,'D:\projects\RcptPrn\Test\RcptPrnTest\Units\FileManagerTest.pas',0,1,54,20,55,0,0
-File_8=SourceModule,'c:\program files (x86)\borland\delphi7\source\rtl\Sys\sysutils.pas',0,1,1317,20,1342,0,0
-File_9=SourceModule,'c:\program files (x86)\borland\delphi7\source\rtl\Win\Windows.pas',0,1,5577,19,5596,0,0
+File_0=SourceModule,'D:\Projects\RcptPrn\Source\RcptPrn\Units\FileManager.pas',0,1,1,37,6,0,0
+File_1=SourceModule,'D:\Projects\RcptPrn\Source\RcptPrn\Forms\fmuSettings.pas',0,1,1,61,16,1,0
+File_2=SourceModule,'D:\Projects\RcptPrn\Source\RcptPrn\Units\ServerParams.pas',0,1,186,12,219,0,0
+File_3=SourceModule,'D:\Projects\RcptPrn\Source\RcptPrn\Units\untVInfo.pas',0,1,1,14,1,0,0
+File_4=SourceModule,'D:\Projects\RcptPrn\Source\RcptPrn\Forms\fmuPrinter.pas',0,1,179,38,194,1,0
+File_5=SourceModule,'D:\Projects\RcptPrn\Source\RcptPrn\Forms\fmuMain.pas',0,1,1,1,1,1,1
+File_6=SourceModule,'c:\program files (x86)\borland\delphi7\Comp\FastMM\FastMM4Messages.pas',0,1,120,28,133,0,0
+File_7=SourceModule,'D:\projects\RcptPrn\Source\Shared\FileUtils.pas',0,1,1,30,12,0,0
+File_8=SourceModule,'D:\projects\RcptPrn\Test\RcptPrnTest\Units\FileManagerTest.pas',0,1,54,20,55,0,0
+File_9=SourceModule,'c:\program files (x86)\borland\delphi7\source\rtl\Sys\sysutils.pas',0,1,1317,20,1342,0,0
 
 [Modules]
 Count=0
@@ -82,11 +82,11 @@ Visible=1
 State=0
 Left=0
 Top=117
-Width=497
+Width=530
 Height=683
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=481
+ClientWidth=514
 ClientHeight=644
 TBDockHeight=681
 LRDockWidth=445

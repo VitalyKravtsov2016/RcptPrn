@@ -7,7 +7,7 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, Buttons, ExtCtrls, ComCtrls,
   // This
-  ServerParams, BrowseFolders, Form2;
+  ServerParams, BrowseFolders, Form2, Spin;
 
 type
   { TfmSettings }
@@ -82,6 +82,8 @@ type
     edtDuplicateReceiptPath: TEdit;
     btnDuplicateReceiptPath: TButton;
     chbStopAfterFile: TCheckBox;
+    lblFileDelay: TLabel;
+    seFileDelay: TSpinEdit;
     procedure btnOkClick(Sender: TObject);
     procedure btnDefaultsClick(Sender: TObject);
     procedure btnReceiptMaskClick(Sender: TObject);
@@ -128,6 +130,7 @@ begin
   chbReceiptCopyEnabled.Checked := AParams.ReceiptCopyEnabled;
   chbStopAfterFile.Checked := AParams.StopAfterFile;
   edtFRPassword.Text := IntToStr(AParams.DriverPassword);
+  seFileDelay.Value := AParams.FileDelay;
   // Закладка "Prometeo"
   edtReceiptMask.Text := AParams.ReceiptMask;
   edtZReportMask.Text := AParams.ZReportMask;
@@ -175,6 +178,7 @@ begin
   AParams.ReceiptCopyEnabled := chbReceiptCopyEnabled.Checked;
   AParams.StopAfterFile := chbStopAfterFile.Checked;
   AParams.DriverPassword := StrToInt(edtFRPassword.Text);
+  AParams.FileDelay := seFileDelay.Value;
   // Закладка "Prometeo"
   AParams.ReceiptMask := edtReceiptMask.Text;
   AParams.ZReportMask := edtZReportMask.Text;

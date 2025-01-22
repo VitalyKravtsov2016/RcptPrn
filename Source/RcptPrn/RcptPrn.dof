@@ -115,7 +115,7 @@ AutoIncBuild=1
 MajorVer=1
 MinorVer=0
 Release=36
-Build=79
+Build=81
 Debug=0
 PreRelease=0
 Special=0
@@ -126,7 +126,7 @@ CodePage=1251
 [Version Info Keys]
 CompanyName=ШТРИХ-М
 FileDescription=Принтер чеков
-FileVersion=1.0.36.79
+FileVersion=1.0.36.81
 InternalName=
 LegalCopyright=(C) ШТРИХ-М
 LegalTrademarks=
@@ -144,10 +144,9 @@ Item0=C:\Components\DUnit\src\
 Count=1
 Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
 [HistoryLists\hlSearchPath]
-Count=3
-Item0=$(DELPHI)\Lib\Debug;C:\PROGRA~2\Borland\Delphi7\Comp\jcl\lib\d7\debug
-Item1=$(DELPHI)\Lib\Debug;C:\COMPON~1\JVCL\jcl\lib\d7\debug;C:\COMPON~1\jcl\lib\d7\debug
-Item2=$(DELPHI)\Lib\Debug
+Count=2
+Item0=$(DELPHI)\Lib\Debug;C:\COMPON~1\JVCL\jcl\lib\d7\debug;C:\COMPON~1\jcl\lib\d7\debug
+Item1=$(DELPHI)\Lib\Debug
 [HistoryLists\hlUnitOutputDirectory]
 Count=2
 Item0=DCU

@@ -1,6 +1,6 @@
 @echo off
-@set path=C:\Program Files\Borland\Delphi7\Bin;%path%
-@set IncDir="C:\Program Files\Borland\Delphi7\Dcu"
+@set path="C:\Program Files (x86)\Borland\Delphi7\Bin";%path%
+@set IncDir="C:\Program Files (x86)\Borland\Delphi7\Dcu"
 @set BinDir="%CD%\Bin"
 @set DcuDir="%CD%\Dcu"
 
@@ -16,7 +16,7 @@ del %DcuDir%\*.dcu /Q
 cd ..\..
 
 ISCC Setup.iss
-move .\Output\setup.exe RcptPrn_1.38.exe
+move .\Output\setup.exe RcptPrn_1.39.exe
 
 rd Output
 del *.dcu /S /Q
